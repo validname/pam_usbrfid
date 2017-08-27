@@ -1,15 +1,15 @@
-It's a simple concept of using a RFID-reader imitating USB-HID device (aka USB keyboard). You may unlock screen locked by XScreenSaver or log in into console via login.
+It's a simple prototype of using a RFID-reader that imitating USB-HID device (aka USB keyboard).
 
-# How to use.
+# How to use
 
-1. Insert you cretendtial into DEFINE's (USER and PASSWORD).
-1. Compile by running `make`
-1. Place `pam_usbrfid.so` to where all PAM modules located.
-1. Mention module for your programs (in `/etc/pam.d/{program_name}`) using `sufficient` directive. You should place it at the top of stack, probably.
+1. Insert you cretendtials into DEFINE's (USER and PASSWORD).
+1. Compile code by running `make`
+1. Place `pam_usbrfid.so` to where all PAM modules are located in your system.
+1. Mention module for your programs (in `/etc/pam.d/{program_name}`) using `sufficient` directive. Maybe, you should place it at the top of stack.
 
-# Hardware.
-It's just a chinese reader that I've bought [here](https://www.aliexpress.com/item/125Khz-RFID-Reader-EM4100-USB-Proximity-Sensor-Smart-Card-Reader-no-drive-issuing-device-EM-ID/32788346694.html). It "enters" 10 first digits from RFID card as decimal number and sends `'\n'` at last.
-Here is some info from `lsusb`:
+# Hardware
+It's just the chinese reader that I've bought [here](https://www.aliexpress.com/item/125Khz-RFID-Reader-EM4100-USB-Proximity-Sensor-Smart-Card-Reader-no-drive-issuing-device-EM-ID/32788346694.html). It "enters" 10 first digits from RFID card as decimal number and sends `'\n'` at the end of line.
+Here is some info about it from `lsusb`:
 ```
 Bus 001 Device 006: ID 08ff:0009 AuthenTec, Inc. 
 Device Descriptor:
@@ -68,6 +68,4 @@ Device Descriptor:
           Usage Type               Data
         wMaxPacketSize     0x0008  1x 8 bytes
         bInterval              10
-
-
 ```
